@@ -1,19 +1,22 @@
-<h1>AskDjango</h1>
-<p>안녕하세요. 여러분의 파이썬/장고 페이스메이커가 되겠습니다. ;)</p>
+<body>
+  <h1>AskDjango</h1>
+  <p>안녕하세요. 여러분의 파이썬/장고 페이스메이커가 되겠습니다. ;)</p>
 
-<form action="" method="">
-  <input type="text" name="q" value="{{ q }}"/>
-  <input type="submit" value="검색" />
-</form>
+  <form action="" method="">
+    <input type="text" name="q" value="{{ q }}"/>
+    <input type="submit" value="검색" />
+  </form>
 
 
-<ul>
-  {% for post in post_list %}
-    <li>
-      {{ post.id }}
-      {{ post.title }}
-     <small>by {{ post.author }}</small>
-     <small>by {{ post.updated_at }}</small>
-    </li>
-  {% endfor %}
-</ul>
+  <ul>
+    {% for post in post_list %}
+      <li>
+        {{ post.id }}
+        {{ post.title }}
+       <small>by {{ post.author }}</small>
+       <small>by {{ post.updated_at }}</small>
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+
