@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Comment
 
 
 # Register your models here.
@@ -18,3 +18,9 @@ class PostAdmin(admin.ModelAdmin):
     def make_published(self, request, queryset):
         updated_count = queryset.update(status='p')
         self.message_user(request,'{}건의 포스팅을 Published 상태로 변경'.format(updated_count))
+
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    pass

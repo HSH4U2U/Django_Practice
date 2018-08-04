@@ -38,4 +38,14 @@ class Post(models.Model):
         ordering = ['-id']
 
     def __str__(self):
-        return self.title       #그냥 object라고 뜨는 걸 제목으로 띄어줌
+        return self.title
+    #그냥 object라고 뜨는 걸 제목으로 띄어줌
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete = models.DO_NOTHING,)
+    author = models.CharField(max_length=20)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+

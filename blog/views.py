@@ -13,3 +13,10 @@ def post_list(request):
         'post_list': qs,
         'q': q,
     })
+
+
+def post_detail(requset, id):
+    post = Post.objects.get(id=id)
+    return render(requset, 'blog/post_detail.html', {
+        'post': post,
+    })
