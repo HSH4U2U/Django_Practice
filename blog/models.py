@@ -1,6 +1,7 @@
 import re
 from django.db import models
 from django.forms import ValidationError
+from django.conf import settings
 
 
 # Create your models here.
@@ -23,6 +24,7 @@ class Post(models.Model):
     #         ('제목2', '제목2 레이블'),
     #         ('제목3', '제목3 레이블'),
     #     ))
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.DO_NOTHING,)
     author = models.CharField(max_length=20)
     title = models.CharField(max_length=100, verbose_name='제목',help_text='포스팅 제목을 입력해주세요. 100자 내외')
     content = models.TextField(verbose_name='내용')
