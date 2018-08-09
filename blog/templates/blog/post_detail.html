@@ -1,28 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ post.title }}</title>
-</head>
-<body>
-  <h1>{{ post.title }}</h1>
+{% extends "blog/layout.html" %}
 
-  {{ post.content }}
+{% block title %}
+    {{ post.title }}
+{% endblock %}
 
-  <hr/>
+{% block content %}
+    <h2>{{ post.title }}</h2>
 
-  <h3>Comments</h3>
+    {{ post.content|linebreaks }}
 
-  <ul>
+    <hr/>
+
+    <h3>Comments</h3>
+
+    <ul>
     {% for comment in post.comment_set.all %}
-    <li>
-      {{ comment.message }}
-      {{ comment.author }}
-      {{ comment.updated_at }}
-  </li>
-
+        <li>
+            {{ comment.message }}
+            <small>by {{ comment.author }}</small>
+            <small>at {{ comment.updated_at }}</small>kk
+        </li>
     {% endfor %}
-  </ul>
-
-</body>
-</html>
+    </ul>
+{% endblock %}
