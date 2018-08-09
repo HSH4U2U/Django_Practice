@@ -2,6 +2,7 @@ import re
 from django.db import models
 from django.forms import ValidationError
 from django.conf import settings
+from django.urls import reverse
 
 
 # Create your models here.
@@ -40,9 +41,15 @@ class Post(models.Model):
     class Meta:
         ordering = ['-id']
 
+    def get_absolute_url(self):
+        return reverse('blog:post_detail', args=[self.id])
+    # reserve_url함수를 더 유용하게 해준다고함...(아직 잘 이해 안됨)
+
     def __str__(self):
         return self.title
-    #그냥 object라고 뜨는 걸 제목으로 띄어줌
+    # 그냥 object라고 뜨는 걸 제목으로 띄어줌
+
+
 
 
 class Comment(models.Model):
@@ -58,4 +65,5 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
 
